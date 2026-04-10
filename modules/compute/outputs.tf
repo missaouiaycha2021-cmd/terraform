@@ -1,0 +1,2 @@
+output "dashboard_ips" { value = [aws_instance.dashboard_az1.public_ip, aws_instance.dashboard_az2.public_ip] }
+output "backend_ips"   { value = [aws_instance.backend_az1.private_ip, aws_instance.backend_az2.private_ip] }

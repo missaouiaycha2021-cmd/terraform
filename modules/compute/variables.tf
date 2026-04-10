@@ -1,0 +1,9 @@
+variable "ami_id" {}
+variable "instance_type" {}
+variable "dashboard_subnet_az1" {}
+variable "dashboard_subnet_az2" {}
+variable "backend_subnet_az1" {}
+variable "backend_subnet_az2" {}
+variable "frontend_sg" {}
+variable "backend_sg" {}
+variable "key_name" {}

@@ -1,0 +1,1 @@
+# outputs désactivés - monitoring géré par Prometheus + Grafana

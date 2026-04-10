@@ -1,0 +1,9 @@
+variable "vpc_cidr" {}
+variable "az1" {}
+variable "az2" {}
+variable "dashboard_subnet_az1" {}
+variable "dashboard_subnet_az2" {}
+variable "backend_subnet_az1" {}
+variable "backend_subnet_az2" {}
+variable "db_subnet_az1" {}
+variable "db_subnet_az2" {}
