@@ -33,6 +33,7 @@ module "compute" {
   frontend_sg          = module.security.frontend_sg
   backend_sg           = module.security.backend_sg
   key_name = var.key_name
+  monitoring_sg = module.security.monitoring_sg
 }
 
 module "database" {

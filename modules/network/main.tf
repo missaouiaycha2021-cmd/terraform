@@ -76,3 +76,35 @@ resource "aws_route_table_association" "dashboard_az2" {
   subnet_id      = aws_subnet.dashboard_az2.id
   route_table_id = aws_route_table.public.id
 }
+
+# NAT Gateway
+resource "aws_eip" "nat" {
+  domain = "vpc"
+}
+
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.dashboard_az1.id
+  tags = { Name = "nat-gateway" }
+}
+
+# Route table privée pour les backends
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.nat.id
+  }
+  tags = { Name = "private-rt" }
+}
+
+# Association subnets backend
+resource "aws_route_table_association" "backend_az1" {
+  subnet_id      = aws_subnet.backend_az1.id
+  route_table_id = aws_route_table.private.id
+}
+
+resource "aws_route_table_association" "backend_az2" {
+  subnet_id      = aws_subnet.backend_az2.id
+  route_table_id = aws_route_table.private.id
+}

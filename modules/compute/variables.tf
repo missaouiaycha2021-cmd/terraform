@@ -7,3 +7,4 @@ variable "backend_subnet_az2" {}
 variable "frontend_sg" {}
 variable "backend_sg" {}
 variable "key_name" {}
+variable "monitoring_sg" {}

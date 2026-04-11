@@ -10,3 +10,7 @@ output "db_endpoint" {
 output "loadbalancer_dns" {
   value = module.loadbalancer.lb_dns_name
 }
+
+output "monitoring_ip" {
+  value = module.compute.monitoring_ip
+}
