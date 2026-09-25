@@ -3,6 +3,7 @@ terraform {
     path = "terraform.tfstate"
   }
 }
+
 module "network" {
   source               = "../../modules/network"
   vpc_cidr             = var.vpc_cidr
@@ -17,9 +18,8 @@ module "network" {
 }
 
 module "security" {
-  source        = "../../modules/security"
-  vpc_id        = module.network.vpc_id
-
+  source = "../../modules/security"
+  vpc_id = module.network.vpc_id
 }
 
 module "compute" {
@@ -32,19 +32,10 @@ module "compute" {
   backend_subnet_az2   = module.network.backend_subnet_az2
   frontend_sg          = module.security.frontend_sg
   backend_sg           = module.security.backend_sg
-  key_name = var.key_name
-  monitoring_sg = module.security.monitoring_sg
-}
-
-module "database" {
-  source            = "../../modules/database"
-  db_name           = var.db_name
-  db_user           = var.db_user
-  db_password       = var.db_password
-  db_subnet_az1     = module.network.db_subnet_az1
-  db_subnet_az2     = module.network.db_subnet_az2
-  db_sg             = module.security.db_sg
-  db_instance_class = var.db_instance_class
+  key_name             = var.key_name
+  monitoring_sg        = module.security.monitoring_sg
+  db_subnet_az1        = module.network.db_subnet_az1
+  db_sg                = module.security.db_sg
 }
 
 module "loadbalancer" {

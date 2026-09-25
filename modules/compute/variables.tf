@@ -8,3 +8,5 @@ variable "frontend_sg" {}
 variable "backend_sg" {}
 variable "key_name" {}
 variable "monitoring_sg" {}
+variable "db_subnet_az1" {}
+variable "db_sg" {}

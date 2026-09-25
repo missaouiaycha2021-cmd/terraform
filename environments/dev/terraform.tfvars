@@ -14,4 +14,4 @@ db_name              = "mydb"
 db_user              = "admin"
 db_password          = "Admin123!"
 
-key_name = "key-devops"
+key_name = "new-key-devops"
